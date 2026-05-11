@@ -11,10 +11,6 @@ public class AnneesBissextiles {
   /// @param annee année à tester (positive)
   /// @return `true` si l'année est bissextile, `false` sinon
   public static boolean estBissextile(int annee) {
-    // TODO kata 1 : découvrir progressivement les 3 règles en activant
-    // les tests un par un. Commencez par un simple modulo 4, puis
-    // ajoutez les exceptions à chaque fois qu'un nouveau test échoue.
-    boolean bissextile = false;
-    return bissextile;
+    return (annee % 4 == 0 && annee % 100 != 0) || (annee % 400 == 0);
   }
 }
