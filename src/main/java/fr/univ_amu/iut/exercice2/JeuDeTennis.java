@@ -20,6 +20,11 @@ public class JeuDeTennis {
   /// Enregistre un point pour le joueur dont le nom est passé en argument.
   public void marquerPoint(String joueur) {
     // TODO kata 2 : incrémenter le compteur du joueur qui vient de marquer.
+    if (joueur.equals(joueur1)) {
+      points1++;
+    } else if (joueur.equals(joueur2)) {
+      points2++;
+    }
   }
 
   /// Retourne la représentation textuelle du score courant.
@@ -29,7 +34,16 @@ public class JeuDeTennis {
     //   - égalité >=3 : "Égalité"
     //   - après Égalité, un joueur mène d'un point : "Avantage <nom>"
     //   - un joueur a 4 points et 2 d'avance : "Jeu pour <nom>"
-    String score = "0-0";
-    return score;
+    if (points1 >= 3 && points2 >= 3) {
+      if (points1 == points2) return "Égalité";
+      if (points1 - points2 == 1) return "Avantage " + joueur1;
+      if (points2 - points1 == 1) return "Avantage " + joueur2;
+    }
+
+    if (points1 >= 4 && points1 - points2 >= 2) return "Jeu pour " + joueur1;
+    if (points2 >= 4 && points2 - points1 >= 2) return "Jeu pour " + joueur2;
+
+    String[] labels = {"0", "15", "30", "40"};
+    return labels[points1] + "-" + labels[points2];
   }
 }
